@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Laptop Store</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Tech Laptop Store</h1>
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+        <section class="checkout-page">
+
+            <h2>Checkout</h2>
+
+            <form id="checkout-form">
+
+                <input
+                type="text"
+                id="name"
+                placeholder="Full Name"
+                required>
+
+                <input
+                type="email"
+                id="email"
+                placeholder="Email Address"
+                required>
+
+                <input
+                type="text"
+                id="phone"
+                placeholder="Phone Number"
+                required>
+
+                <textarea
+                id="address"
+                placeholder="Delivery Address"
+                required>
+                </textarea>
+
+                <div id="order-summary">
+
+                </div>
+
+                <button type="submit">
+                    Place Order
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+    <footer>
+
+        <p>Tech Laptop Store © 2026</p>
+
+    </footer>
+    <script src="js/app.js"></script>
+</body>
+</html>

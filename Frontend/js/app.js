@@ -164,4 +164,72 @@ function removeItem(index){
 
     displayCart();
 }
+
+function displayOrderSummary(){
+
+    let cart =
+    JSON.parse(
+    localStorage.getItem('cart')
+    ) || [];
+
+    const summary =
+    document.getElementById(
+        'order-summary'
+    );
+
+    if(!summary) return;
+
+    let total = 0;
+
+    summary.innerHTML =
+    "<h3>Order Summary</h3>";
+
+    cart.forEach(item => {
+
+        total +=
+        item.price *
+        item.quantity;
+
+        summary.innerHTML +=
+        `
+        <p>
+        ${item.name}
+        x ${item.quantity}
+        =
+        $${item.price * item.quantity}
+        </p>
+        `;
+    });
+
+    summary.innerHTML +=
+    `<h4>Total: $${total}</h4>`;
+}
+
+const checkoutForm =
+document.getElementById(
+'checkout-form'
+);
+
+if(checkoutForm){
+
+    checkoutForm.addEventListener(
+    'submit',
+
+    function(event){
+
+        event.preventDefault();
+
+        localStorage.removeItem(
+        'cart'
+        );
+
+        window.location.href =
+        "order-confirmation.html";
+
+    });
+
+}
+
+
 displayCart();
+displayOrderSummary();
