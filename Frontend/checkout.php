@@ -26,35 +26,17 @@
 
             <h2>Checkout</h2>
 
-            <form id="checkout-form">
+            <form action="../Backend/place_order.php" method="POST" id="checkout-form">
 
-                <input
-                type="text"
-                id="name"
-                placeholder="Full Name"
-                required>
+                <input type="text" name="name" placeholder="Full Name" required>
 
-                <input
-                type="email"
-                id="email"
-                placeholder="Email Address"
-                required>
+                <input type="email" name="email" placeholder="Email" required>
 
-                <input
-                type="text"
-                id="phone"
-                placeholder="Phone Number"
-                required>
+                <input type="text" name="phone" placeholder="Phone" required>
 
-                <textarea
-                id="address"
-                placeholder="Delivery Address"
-                required>
-                </textarea>
+                <textarea name="address" placeholder="Address" required></textarea>
 
-                <div id="order-summary">
-
-                </div>
+                <input type="hidden" name="cart_data" id="cart_data">
 
                 <button type="submit">
                     Place Order

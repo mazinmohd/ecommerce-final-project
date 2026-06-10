@@ -77,9 +77,11 @@ include '../Backend/db.php';
                     ?>
                 </p>
 
-                <button class="view-btn">
-                    View Details
-                </button>
+                <a href="product.php?id=<?php echo $product['id']; ?>">
+                    <button class="view-btn">
+                        View Details
+                    </button>
+                </a>
 
             </div>
 

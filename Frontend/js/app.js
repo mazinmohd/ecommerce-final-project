@@ -1,63 +1,49 @@
 function filterProducts(category){
 
-    const products =
-    document.querySelectorAll('.product-card');
+    const products = document.querySelectorAll('.product-card');
 
     products.forEach(product => {
 
-        if(category === 'all'){
-
+        if(category === 'all' || product.classList.contains(category)){
             product.style.display = 'block';
-
-        }
-
-        else if(
-            product.classList.contains(category)
-        ){
-
-            product.style.display = 'block';
-
-        }
-
-        else{
-
+        } else {
             product.style.display = 'none';
-
         }
 
     });
 
 }
+
+/* CART  */
+
 function addToCart(name, price){
 
-    let cart =
-    JSON.parse(
-    localStorage.getItem('cart')
-    ) || [];
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    cart.push({
-        name:name,
-        price:price,
-        quantity:1
-    });
+    let existing = cart.find(item => item.name === name);
 
-    localStorage.setItem(
-        'cart',
-        JSON.stringify(cart)
-    );
+    if(existing){
+        existing.quantity += 1;
+    } else {
+        cart.push({
+            name: name,
+            price: price,
+            quantity: 1
+        });
+    }
 
-    alert(name + " added to cart!");
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Added to cart!");
 }
+
+/* DISPLAY CART */
 
 function displayCart(){
 
-    let cart =
-    JSON.parse(
-    localStorage.getItem('cart')
-    ) || [];
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    const cartContainer =
-    document.getElementById('cart-items');
+    const cartContainer = document.getElementById('cart-items');
 
     if(!cartContainer) return;
 
@@ -67,169 +53,120 @@ function displayCart(){
 
     cart.forEach((item,index)=>{
 
-        total +=
-        item.price *
-        item.quantity;
+        total += item.price * item.quantity;
 
         cartContainer.innerHTML += `
         <div class="cart-item">
 
             <div class="cart-info">
                 <h3>${item.name}</h3>
-
                 <p>Price: $${item.price}</p>
-
                 <p>Quantity: ${item.quantity}</p>
-
-                <p>
-                    Subtotal:
-                    $${item.price * item.quantity}
-                </p>
+                <p>Subtotal: $${item.price * item.quantity}</p>
             </div>
 
             <div class="cart-actions">
 
-                <button onclick="increaseQuantity(${index})">
-                    +
-                </button>
-
-                <button onclick="decreaseQuantity(${index})">
-                    -
-                </button>
-
-                <button onclick="removeItem(${index})">
-                    Remove
-                </button>
+                <button onclick="increaseQuantity(${index})">+</button>
+                <button onclick="decreaseQuantity(${index})">-</button>
+                <button onclick="removeItem(${index})">Remove</button>
 
             </div>
 
-        </div>
-        `;
+        </div>`;
     });
 
-    document.getElementById(
-    'cart-total'
-    ).innerText =
-    "Total: $" + total;
+    const totalEl = document.getElementById('cart-total');
+    if(totalEl){
+        totalEl.innerText = "Total: $" + total;
+    }
 }
+
+/*  CART ACTIONS  */
+
 function increaseQuantity(index){
 
-    let cart =
-    JSON.parse(
-    localStorage.getItem('cart')
-    );
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     cart[index].quantity++;
 
-    localStorage.setItem(
-        'cart',
-        JSON.stringify(cart)
-    );
+    localStorage.setItem('cart', JSON.stringify(cart));
 
     displayCart();
 }
+
 function decreaseQuantity(index){
 
-    let cart =
-    JSON.parse(
-    localStorage.getItem('cart')
-    );
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    if(
-        cart[index].quantity > 1
-    ){
+    if(cart[index].quantity > 1){
         cart[index].quantity--;
     }
 
-    localStorage.setItem(
-        'cart',
-        JSON.stringify(cart)
-    );
+    localStorage.setItem('cart', JSON.stringify(cart));
 
     displayCart();
 }
+
 function removeItem(index){
 
-    let cart =
-    JSON.parse(
-    localStorage.getItem('cart')
-    );
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     cart.splice(index,1);
 
-    localStorage.setItem(
-        'cart',
-        JSON.stringify(cart)
-    );
+    localStorage.setItem('cart', JSON.stringify(cart));
 
     displayCart();
 }
 
+/*  ORDER SUMMARY  */
+
 function displayOrderSummary(){
 
-    let cart =
-    JSON.parse(
-    localStorage.getItem('cart')
-    ) || [];
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    const summary =
-    document.getElementById(
-        'order-summary'
-    );
+    const summary = document.getElementById('order-summary');
 
     if(!summary) return;
 
     let total = 0;
 
-    summary.innerHTML =
-    "<h3>Order Summary</h3>";
+    summary.innerHTML = "<h3>Order Summary</h3>";
 
     cart.forEach(item => {
 
-        total +=
-        item.price *
-        item.quantity;
+        total += item.price * item.quantity;
 
-        summary.innerHTML +=
-        `
-        <p>
-        ${item.name}
-        x ${item.quantity}
-        =
-        $${item.price * item.quantity}
-        </p>
-        `;
+        summary.innerHTML += `
+        <p>${item.name} x ${item.quantity} = $${item.price * item.quantity}</p>`;
     });
 
-    summary.innerHTML +=
-    `<h4>Total: $${total}</h4>`;
+    summary.innerHTML += `<h4>Total: $${total}</h4>`;
 }
 
-const checkoutForm =
-document.getElementById(
-'checkout-form'
-);
+/*  CHECKOUT  */
 
-if(checkoutForm){
+document.addEventListener("DOMContentLoaded", function(){
 
-    checkoutForm.addEventListener(
-    'submit',
+    const form = document.getElementById("checkout-form");
 
-    function(event){
+    if(form){
 
-        event.preventDefault();
+        form.addEventListener("submit", function(){
 
-        localStorage.removeItem(
-        'cart'
-        );
+            let cart = localStorage.getItem("cart");
 
-        window.location.href =
-        "order-confirmation.html";
+            const input = document.getElementById("cart_data");
 
-    });
+            if(input){
+                input.value = cart;
+            }
 
-}
+        });
 
+    }
 
-displayCart();
-displayOrderSummary();
+    displayCart();
+    displayOrderSummary();
+
+});

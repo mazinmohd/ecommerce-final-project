@@ -546,6 +546,140 @@ footer{
     background:#0056b3;
 }
 
+/* Product page */
+.product-container{
+    min-height:70vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px 20px;
+}
+.product-box{
+
+    background:#fff;
+
+    width:900px;
+
+    max-width:100%;
+
+    border-radius:15px;
+
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+
+    overflow:hidden;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:40px;
+
+    padding:30px;
+}
+.product-image{
+
+    width:350px;
+
+    max-width:100%;
+
+    border-radius:10px;
+}
+.product-content{
+
+    flex:1;
+}
+.category-badge{
+
+    background:#007bff;
+
+    color:white;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:14px;
+
+    display:inline-block;
+
+    margin-bottom:15px;
+}
+.product-content h1{
+
+    font-size:32px;
+
+    margin-bottom:10px;
+
+    color:#222;
+}
+.product-content h2{
+
+    color:#28a745;
+
+    margin-bottom:20px;
+
+    font-size:28px;
+}
+.description{
+
+    color:#555;
+
+    line-height:1.8;
+
+    margin-bottom:25px;
+}
+.button-group{
+    display:flex;
+    justify-content:center;
+    align-items:baseline;
+    gap: 25px;
+    flex-wrap:wrap;
+}
+
+.cart-btn,
+.back-btn{
+    min-width:160px;
+    text-align:center;
+}
+.cart-btn,
+.back-btn{
+
+    border:none;
+
+    padding:12px 25px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    transition:0.3s;
+}
+.cart-btn{
+
+    background:#28a745;
+
+    color:white;
+}
+.back-btn{
+
+    background:#007bff;
+
+    color:white;
+}
+.cart-btn:hover,
+.back-btn:hover{
+
+    opacity:0.9;
+}
+
 /* Responsible Design  */
 
 @media(max-width:768px){
@@ -588,6 +722,27 @@ footer{
     .cart-actions{
         margin-top:15px;
         flex-wrap:wrap;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .product-box{
+
+        flex-direction:column;
+
+        text-align:center;
+    }
+
+    .product-image{
+
+        width:280px;
+    }
+
+    .button-group{
+
+        justify-content:center;
     }
 
 }
