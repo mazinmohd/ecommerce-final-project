@@ -4,10 +4,12 @@ function filterProducts(category){
 
     products.forEach(product => {
 
-        if(category === 'all' || product.classList.contains(category)){
-            product.style.display = 'block';
+        const match = product.classList.contains(category);
+
+        if(category === 'all' || match){
+            product.style.display = "block";
         } else {
-            product.style.display = 'none';
+            product.style.display = "none";
         }
 
     });
