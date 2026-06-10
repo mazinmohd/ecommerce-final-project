@@ -18,6 +18,8 @@ body{
 main{
     flex:1;
 }
+
+/* navigation */
 nav{
     background:#222;
     color:white;
@@ -39,6 +41,8 @@ nav a{
     color:white;
     text-decoration:none;
 }
+
+/* Home page */
 
 .hero{
     background-image:url("../images/hero.avif");
@@ -161,6 +165,7 @@ footer{
     margin-top:40px;
 }
 
+/* Products Page  */
 .products-page{
     padding:50px;
     text-align:center;
@@ -301,6 +306,8 @@ footer{
     margin-bottom:30px;
     color:#222;
 }
+
+/* Checkout page  */
 .checkout-btn{
     background:#007bff;
     color:white;
@@ -390,6 +397,7 @@ footer{
     transform:translateY(-2px);
 }
 
+/* Confirmation Page  */
 .confirmation{
     min-height:70vh;
 
@@ -467,7 +475,7 @@ footer{
     margin:15px 0;
 }
 
-
+/* Contact Page  */
 
 .contact-page{
     padding:50px 20px;
@@ -537,6 +545,8 @@ footer{
 .contact-form button:hover{
     background:#0056b3;
 }
+
+/* Responsible Design  */
 
 @media(max-width:768px){
 
