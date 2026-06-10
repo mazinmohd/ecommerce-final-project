@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Laptop Store</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Tech Laptop Store</h1>
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Cart</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="products-page">
+
+        <h2>Our Laptop Collection</h2>
+
+    </section>
+    <div class="filter-buttons">
+
+        <button onclick="filterProducts('all')">All</button>
+
+        <button onclick="filterProducts('gaming')">Gaming</button>
+
+        <button onclick="filterProducts('business')">Business</button>
+
+        <button onclick="filterProducts('student')">Student</button>
+
+    </div> 
+    <div class="products-grid">
+        <div class="product-card gaming">
+
+            <img src="images/Asus.avif" alt="Asus ROG">
+
+            <h3>Asus ROG</h3>
+
+            <p>$1500</p>
+
+            <button class="view-btn">View Details</button>
+
+        </div>
+        <div class="product-card business">
+
+            <img src="images/Lenovo.avif" alt="ThinkPad">
+
+            <h3>Lenovo ThinkPad</h3>
+
+            <p>$1000</p>
+
+            <button class="view-btn">View Details</button>
+
+        </div>
+        <div class="product-card student">
+
+            <img src="images/HP.avif" alt="HP Pavilion">
+
+            <h3>HP Pavilion</h3>
+
+            <p>$850</p>
+
+            <button class="view-btn">View Details</button>
+
+        </div>
+        <div class="product-card business">
+
+            <img src="images/Dell.avif" alt="Dell XPS">
+
+            <h3>Dell XPS 15</h3>
+
+            <p>$1200</p>
+
+            <button class="view-btn">View Details</button>
+
+        </div>  
+        <div class="product-card gaming">
+
+            <img src="images/msi.avif" alt="msi laptop">
+
+            <h3>MSI gaming laptop</h3>
+
+            <p>$1300</p>
+
+            <button class="view-btn">View Details</button>
+
+        </div>  
+        <div class="product-card student">
+
+            <img src="images/Acer.avif" alt="Acer XPS">
+
+            <h3>Acer Nitro</h3>
+
+            <p>$550</p>
+
+            <button class="view-btn">View Details</button>
+
+        </div>      
+    </div>
+    <footer>
+
+        <p>Tech Laptop Store © 2026</p>
+
+    </footer>
+    <script src="js/app.js"></script>
+</body>
+</html>
