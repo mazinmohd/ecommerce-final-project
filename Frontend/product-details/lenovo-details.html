@@ -16,7 +16,7 @@
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../products.html">Products</a></li>
                 <li><a href="#">Categories</a></li>
-                <li><a href="#">Cart</a></li>
+                <li><a href="../cart.html">Cart</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
@@ -53,8 +53,13 @@
                     excellent keyboard quality. It is ideal for business users,
                     remote workers, and office professionals.
                     </p>
-                    <button class="cart-btn">
-                        Add To Cart
+                    <button
+                    class="cart-btn"
+                    onclick="addToCart(
+                    'Lenovo ThinkPad',
+                    1000
+                    )">
+                    Add To Cart
                     </button>
 
                 </div>
@@ -68,6 +73,6 @@
         <p>Tech Laptop Store © 2026</p>
 
     </footer>
-    <script src="js/app.js"></script>
+    <script src="../js/app.js"></script>
 </body>
 </html>
