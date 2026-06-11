@@ -2,56 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Laptop Store</title>
-
-    <link rel="stylesheet" href="css/style.css">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="css/style2.css">
 </head>
+
 <body>
-    <header>
-        <nav>
-            <h1>Tech Laptop Store</h1>
 
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.php">Products</a></li>
-                <li><a href="cart.html">Cart</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
+<!-- NAVBAR -->
+<header class="navbar">
+    <h2 class="logo">TechLaptop</h2>
 
-        <section class="checkout-page">
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.php">Products</a>
+        <a href="cart.html">Cart</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
 
-            <h2>Checkout</h2>
+<!-- CHECKOUT -->
+<section class="checkout-page">
 
-            <form action="../Backend/place_order.php" method="POST" id="checkout-form">
+    <div class="checkout-container">
+
+        <!-- FORM -->
+        <div class="checkout-form-box">
+
+            <h2>Billing Details</h2>
+
+            <form id="checkout-form" method="POST" action="../Backend/place_order.php">
 
                 <input type="text" name="name" placeholder="Full Name" required>
-
                 <input type="email" name="email" placeholder="Email" required>
-
                 <input type="text" name="phone" placeholder="Phone" required>
+                <input type="text" name="address" placeholder="Address" required>
 
-                <textarea name="address" placeholder="Address" required></textarea>
-
+                <!-- CART DATA -->
                 <input type="hidden" name="cart_data" id="cart_data">
 
-                <button type="submit">
+                <button type="submit" class="checkout-btn">
                     Place Order
                 </button>
 
             </form>
 
-        </section>
+        </div>
 
-    </main>
-    <footer>
+        <!-- ORDER SUMMARY -->
+        <div class="order-summary-box">
 
-        <p>Tech Laptop Store © 2026</p>
+            <h2>Your Order</h2>
 
-    </footer>
-    <script src="js/app.js"></script>
+            <div id="order-summary"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Tech Laptop Store</p>
+</footer>
+
+<script src="js/app.js"></script>
+
 </body>
 </html>

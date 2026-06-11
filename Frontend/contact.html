@@ -2,91 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Laptop Store</title>
-
-    <link rel="stylesheet" href="css/style.css">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="css/style2.css">
 </head>
+
 <body>
-    <header>
-        <nav>
-            <h1>Tech Laptop Store</h1>
 
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.php">Products</a></li>
-                <li><a href="cart.html">Cart</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
+<header class="navbar">
+    <h2 class="logo">TechLaptop</h2>
 
-        <section class="contact-page">
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.php">Products</a>
+        <a href="cart.html">Cart</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
 
-            <h2>Contact Us</h2>
+<div class="contact-page">
 
-            <p class="contact-text">
-                Have questions about our products?
-                We'd love to hear from you.
-            </p>
+    <div class="contact-container">
 
-            <div class="contact-container">
+        <!-- LEFT INFO -->
+        <div class="contact-info">
 
-                <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <p>We are here to help you with any questions about our products.</p>
 
-                    <h3>Our Information</h3>
+            <p>📍 Kigali, Rwanda</p>
+            <p>📞 +250 791 591 773</p>
+            <p>📧 info@techlaptop.com</p>
 
-                    <p><strong>Store:</strong> Tech Laptop Store</p>
+        </div>
 
-                    <p><strong>Email:</strong> info@techlaptopstore.com</p>
+        <!-- FORM -->
+        <div class="contact-form-box">
 
-                    <p><strong>Phone:</strong> +250 788 123 456</p>
+            <form action="../Backend/contact_submit.php" method="POST">
 
-                    <p><strong>Location:</strong> Kigali, Rwanda</p>
+                <input type="text" name="name" placeholder="Your Name" required>
 
-                </div>
+                <input type="email" name="email" placeholder="Your Email" required>
 
-                <div class="contact-form">
+                <textarea name="message" placeholder="Your Message" required></textarea>
 
-                    <h3>Send a Message</h3>
+                <button type="submit">Send Message</button>
 
-                    <form>
+            </form>
 
-                        <input
-                        type="text"
-                        placeholder="Your Name"
-                        required>
+        </div>
 
-                        <input
-                        type="email"
-                        placeholder="Your Email"
-                        required>
+    </div>
 
-                        <textarea
-                        placeholder="Your Message"
-                        rows="5"
-                        required>
-                        </textarea>
+</div>
 
-                        <button type="submit">
-                            Send Message
-                        </button>
+<footer>
+    <p>© 2026 Tech Laptop Store</p>
+</footer>
 
-                    </form>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-    <footer>
-
-        <p>Tech Laptop Store © 2026</p>
-
-    </footer>
-    <script src="js/app.js"></script>
 </body>
 </html>

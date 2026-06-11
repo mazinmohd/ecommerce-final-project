@@ -1,105 +1,80 @@
 <?php
-
-include '../Backend/db.php';
+include "../Backend/db.php";
 
 $id = $_GET['id'];
 
-$query =
-"SELECT * FROM products WHERE id = $id";
-
-$result =
-mysqli_query($conn,$query);
-
-$product =
-mysqli_fetch_assoc($result);
-
+$result = mysqli_query($conn, "SELECT * FROM products WHERE id=$id");
+$product = mysqli_fetch_assoc($result);
 ?>
+
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
-    <title>
-        <?php echo $product['name']; ?>
-    </title>
-
-    <link rel="stylesheet" href="css/style.css">
-
+    <meta charset="UTF-8">
+    <title><?php echo $product['name']; ?></title>
+    <link rel="stylesheet" href="css/style2.css">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <h1>Tech Laptop Store</h1>
 
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">Products</a></li>
-                <li><a href="cart.html">Cart</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-<main>
+<!-- NAVBAR -->
+<header class="navbar">
+    <h2 class="logo">TechLaptop</h2>
 
-    <section class="product-container">
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.php">Products</a>
+        <a href="cart.html">Cart</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
 
-        <div class="product-box">
+<!-- PRODUCT DETAILS -->
+<section class="product-details">
 
-            <img
-            src="images/<?php echo $product['image']; ?>"
-            alt="<?php echo $product['name']; ?>"
-            class="product-image">
+    <div class="product-container">
 
-            <div class="product-content">
+        <!-- IMAGE -->
+        <div class="product-image">
+            <img src="images/<?php echo $product['image']; ?>" alt="">
+        </div>
 
-                <span class="category-badge">
-                    <?php echo $product['category']; ?>
-                </span>
+        <!-- INFO -->
+        <div class="product-info">
 
-                <h1>
-                    <?php echo $product['name']; ?>
-                </h1>
+            <h1><?php echo $product['name']; ?></h1>
 
-                <h2>
-                    $<?php echo $product['price']; ?>
-                </h2>
+            <h2 class="price">$<?php echo $product['price']; ?></h2>
 
-                <p class="description">
-                    <?php echo $product['description']; ?>
-                </p>
+            <p class="desc">
+                <?php echo $product['description']; ?>
+            </p>
 
-                <div class="button-group">
+        <div class="button-group">
 
-                    <button
-                    class="cart-btn"
-                    onclick="addToCart(
-                    '<?php echo $product['name']; ?>',
-                    <?php echo $product['price']; ?>
-                    )">
-                        Add To Cart
-                    </button>
+            <button class="cart-btn"
+                onclick="addToCart('<?php echo $product['name']; ?>', <?php echo $product['price']; ?>)">
+                Add To Cart
+            </button>
 
-                    <a href="products.php">
-                        <button class="back-btn">
-                            Back To Products
-                        </button>
-                    </a>
+        <a href="products.php" class="back-btn">
+            ← Back to Products
+        </a>
 
-                </div>
-
-            </div>
+</div>
 
         </div>
 
-    </section>
+    </div>
 
-</main>
-    <footer>
+</section>
 
-        <p>Tech Laptop Store © 2026</p>
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Tech Laptop Store</p>
+</footer>
 
-    </footer>
-    <script src="js/app.js"></script>
+<script src="js/app.js"></script>
+
 </body>
 </html>
