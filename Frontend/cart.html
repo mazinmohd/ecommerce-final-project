@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart - Tech Laptop Store</title>
     <link rel="stylesheet" href="css/style2.css">
 </head>
@@ -25,8 +26,14 @@
 
     <h1>Your Shopping Cart</h1>
 
-    <!-- CART ITEMS (JS will fill this) -->
     <div id="cart-items"></div>
+
+    <!-- EMPTY CART MESSAGE -->
+    <div id="empty-cart" class="empty-cart" style="display:none;">
+        <h2>Your cart is empty 🛒</h2>
+        <p>Go back and add some amazing laptops!</p>
+        <a href="products.php" class="shop-btn">Shop Now</a>
+    </div>
 
     <!-- SUMMARY -->
     <div class="cart-summary">

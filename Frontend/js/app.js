@@ -18,7 +18,7 @@ function filterProducts(category){
 
 /* CART  */
 
-function addToCart(name, price){
+function addToCart(name, price, image){
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -30,6 +30,7 @@ function addToCart(name, price){
         cart.push({
             name: name,
             price: price,
+            image: image,
             quantity: 1
         });
     }
@@ -43,44 +44,67 @@ function addToCart(name, price){
 
 function displayCart(){
 
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    const cartContainer = document.getElementById('cart-items');
+    const cartContainer = document.getElementById("cart-items");
+    const totalBox = document.getElementById("cart-total");
+    const emptyCartBox = document.getElementById("empty-cart");
 
     if(!cartContainer) return;
 
-    cartContainer.innerHTML = '';
+    cartContainer.innerHTML = "";
 
     let total = 0;
 
-    cart.forEach((item,index)=>{
+    // EMPTY CART HANDLING
+    if(cart.length === 0){
+
+        if(emptyCartBox) emptyCartBox.style.display = "block";
+        cartContainer.style.display = "none";
+
+        if(totalBox) totalBox.innerText = "Total: $0";
+
+        return;
+    }
+
+    // SHOW CART
+    if(emptyCartBox) emptyCartBox.style.display = "none";
+    cartContainer.style.display = "block";
+
+    cart.forEach((item, index) => {
 
         total += item.price * item.quantity;
 
         cartContainer.innerHTML += `
         <div class="cart-item">
 
+            <!-- IMAGE (fallback if missing) -->
+            <img class="cart-img" src="images/${item.image ? item.image : 'placeholder.avif'}">
+
+            <!-- INFO -->
             <div class="cart-info">
                 <h3>${item.name}</h3>
                 <p>Price: $${item.price}</p>
                 <p>Quantity: ${item.quantity}</p>
-                <p>Subtotal: $${item.price * item.quantity}</p>
+                <p><strong>Subtotal: $${item.price * item.quantity}</strong></p>
             </div>
 
+            <!-- ACTIONS -->
             <div class="cart-actions">
 
                 <button onclick="increaseQuantity(${index})">+</button>
                 <button onclick="decreaseQuantity(${index})">-</button>
-                <button onclick="removeItem(${index})">Remove</button>
+                <button onclick="removeItem(${index})">✕</button>
 
             </div>
 
-        </div>`;
+        </div>
+        `;
     });
 
-    const totalEl = document.getElementById('cart-total');
-    if(totalEl){
-        totalEl.innerText = "Total: $" + total;
+    // TOTAL UPDATE
+    if(totalBox){
+        totalBox.innerText = "Total: $" + total.toFixed(2);
     }
 }
 
@@ -156,19 +180,22 @@ document.addEventListener("DOMContentLoaded", function(){
 
         form.addEventListener("submit", function(){
 
+            // send cart to backend
             let cart = localStorage.getItem("cart");
 
             const input = document.getElementById("cart_data");
-
             if(input){
                 input.value = cart;
             }
+
+            // IMPORTANT: clear cart immediately after sending
+            localStorage.removeItem("cart");
 
         });
 
     }
 
+});
+
     displayCart();
     displayOrderSummary();
-
-});

@@ -11,13 +11,13 @@ $product = mysqli_fetch_assoc($result);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $product['name']; ?></title>
     <link rel="stylesheet" href="css/style2.css">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <header class="navbar">
     <h2 class="logo">TechLaptop</h2>
 
@@ -29,47 +29,51 @@ $product = mysqli_fetch_assoc($result);
     </nav>
 </header>
 
-<!-- PRODUCT DETAILS -->
-<section class="product-details">
+<div class="product-page">
 
-    <div class="product-container">
+    <div class="product-wrapper">
 
         <!-- IMAGE -->
-        <div class="product-image">
+        <div class="product-image-box">
             <img src="images/<?php echo $product['image']; ?>" alt="">
         </div>
 
-        <!-- INFO -->
-        <div class="product-info">
+        <!-- DETAILS -->
+        <div class="product-info-box">
 
             <h1><?php echo $product['name']; ?></h1>
 
-            <h2 class="price">$<?php echo $product['price']; ?></h2>
+            <p class="product-price">
+                $<?php echo $product['price']; ?>
+            </p>
 
-            <p class="desc">
+            <p class="product-desc">
                 <?php echo $product['description']; ?>
             </p>
 
-        <div class="button-group">
+            <div class="btn-group">
 
-            <button class="cart-btn"
-                onclick="addToCart('<?php echo $product['name']; ?>', <?php echo $product['price']; ?>)">
-                Add To Cart
-            </button>
+                <button class="add-cart-btn"
+                    onclick="addToCart(
+                        '<?php echo addslashes($product['name']); ?>',
+                        <?php echo $product['price']; ?>,
+                        '<?php echo $product['image']; ?>'
+                    )">
+                    Add to Cart
+                </button>
 
-        <a href="products.php" class="back-btn">
-            ← Back to Products
-        </a>
+                <a href="products.php" class="back-link">
+                    Back to Products
+                </a>
 
-</div>
+            </div>
 
         </div>
 
     </div>
 
-</section>
+</div>
 
-<!-- FOOTER -->
 <footer>
     <p>© 2026 Tech Laptop Store</p>
 </footer>

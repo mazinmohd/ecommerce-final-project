@@ -45,6 +45,9 @@ if(!$order_result){
     die("Order Error: " . mysqli_error($conn));
 }
 
-header("Location: ../Frontend/order-confirmation.html");
+echo "<script>
+localStorage.removeItem('cart');
+window.location.href='../Frontend/order-confirmation.html';
+</script>";
 exit;
 ?>

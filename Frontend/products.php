@@ -8,6 +8,7 @@ $result = mysqli_query($conn, "SELECT * FROM products");
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products - Tech Laptop Store</title>
     <link rel="stylesheet" href="css/style2.css">
 </head>
@@ -58,10 +59,13 @@ $result = mysqli_query($conn, "SELECT * FROM products");
                 </button>
 
                 <button class="cart-btn"
-                    onclick="addToCart('<?php echo $product['name']; ?>', <?php echo $product['price']; ?>)">
+                    onclick="addToCart(
+                    '<?php echo addslashes($product['name']); ?>',
+                    <?php echo $product['price']; ?>,
+                    '<?php echo $product['image']; ?>'
+                    )">
                     Add To Cart
                 </button>
-
             </div>
 
         <?php } ?>
