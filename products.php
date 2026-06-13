@@ -11,6 +11,7 @@ $result = mysqli_query($conn, "SELECT * FROM products");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products - Tech Laptop Store</title>
     <link rel="stylesheet" href="css/style2.css">
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 
 <body>
