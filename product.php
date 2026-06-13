@@ -1,5 +1,5 @@
 <?php
-include "../Backend/db.php";
+include "Backend/db.php";
 
 $id = $_GET['id'];
 

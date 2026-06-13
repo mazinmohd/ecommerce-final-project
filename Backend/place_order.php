@@ -47,7 +47,7 @@ if(!$order_result){
 
 echo "<script>
 localStorage.removeItem('cart');
-window.location.href='../Frontend/order-confirmation.html';
+window.location.href='../order-confirmation.html';
 </script>";
 exit;
 ?>

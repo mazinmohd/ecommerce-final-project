@@ -11,7 +11,7 @@ $sql = "INSERT INTO contacts (name, email, message)
 if(mysqli_query($conn, $sql)){
     echo "<script>
         alert('Message sent successfully!');
-        window.location.href='../Frontend/contact.html';
+        window.location.href='../contact.html';
     </script>";
 } else {
     echo "Error: " . mysqli_error($conn);

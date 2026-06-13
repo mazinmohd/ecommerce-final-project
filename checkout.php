@@ -31,7 +31,7 @@
 
             <h2>Billing Details</h2>
 
-            <form id="checkout-form" method="POST" action="../Backend/place_order.php">
+            <form id="checkout-form" method="POST" action="Backend/place_order.php">
 
                 <input type="text" name="name" placeholder="Full Name" required>
                 <input type="email" name="email" placeholder="Email" required>

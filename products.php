@@ -1,5 +1,5 @@
 <?php
-include "../Backend/db.php";
+include "Backend/db.php";
 
 $result = mysqli_query($conn, "SELECT * FROM products");
 ?>
